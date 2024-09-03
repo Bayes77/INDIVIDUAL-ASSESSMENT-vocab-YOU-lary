@@ -5,10 +5,10 @@ import formEvents from '../../components/events/formEvents';
 import navigationEvents from '../../components/events/navigationEvents';
 import logoutButton from '../../components/logoutButton';
 
-const startApp = () => {
-  domBuilder();
-  domEvents();
-  formEvents();
+const startApp = (user) => {
+  domBuilder(user);
+  domEvents(user);
+  formEvents(user);
   navBar();
   logoutButton();
   navigationEvents();
