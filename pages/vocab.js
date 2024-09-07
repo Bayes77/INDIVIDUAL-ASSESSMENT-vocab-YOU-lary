@@ -15,20 +15,16 @@ const showVocab = (array) => {
 
   let domString = '';
   array.forEach((item) => {
-    domString = +`
+    domString += `
     <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${item.title}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${item.description}</h6>
       <h6 class="card-language">${item.language}</h6>
-      <hr>
-      <div>${item.favorite ? '<i class="fa fa-star" aria-hidden="true"></i>' : ''}</div>
-      <button class="btn btn-success">
-      <i class="fa fa-eye" id="view-entry-btn--${item.firebaseKey}"></i>
-        </button>
-      <button class="btn-info"><i class="fa fa-edit" id="update-entry--${item.firebaseKey}"></i></button>
-
-      <button class="btn btn-danger"><i class="fa fa-trash-alt" id="delete-entry-btn--${item.firebaseKey}"></i></button>
+   <i id="edit-vocab-btn--${item.firebaseKey}" class="fas fa-edit btn btn-link">Edit</i>
+<i id="delete-vocab-btn--${item.firebaseKey}" class="btn btn-link fas fa-trash-alt">Delete</i>
+    
+     
       
     </div>
   </div>
