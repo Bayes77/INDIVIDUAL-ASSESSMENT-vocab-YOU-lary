@@ -22,8 +22,8 @@ const getVocab = (uid) => new Promise((resolve, reject) => {
 
 // create vocab card
 const createVocabCard = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/`, {
-    method: 'post',
+  fetch(`${endpoint}/vocab.json`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application.json',
     },
@@ -48,4 +48,48 @@ const updateVocabCard = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getVocab, createVocabCard, updateVocabCard };
+// delete Vocab Card
+
+const deleteVocabCard = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocab/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+// filter vocab card
+
+const vocabOnSale = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocab.json?orderBy="id"&equalTo=${uid}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+// get single card
+
+const getSingleCard = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocab.json?orderBy="id"&equalTo=${uid}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  getVocab, createVocabCard, updateVocabCard, deleteVocabCard, vocabOnSale, getSingleCard
+};

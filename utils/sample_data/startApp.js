@@ -16,6 +16,7 @@ const startApp = (user) => {
   navigationEvents();
 
   getVocab(user.uid).then((vocab) => showVocab(vocab));
+  console.warn(user.uid);
 };
 
 export default startApp;
