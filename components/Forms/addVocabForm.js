@@ -1,5 +1,6 @@
 import clearDom from '../../utils/sample_data/clearDom';
 import renderToDom from '../../utils/sample_data/renderToDom';
+// import selectVocab from './selectVocab';
 
 const addVocabForm = (obj = {}) => {
   clearDom();
@@ -29,7 +30,7 @@ const addVocabForm = (obj = {}) => {
       </form>`;
 
   renderToDom('#form-container', domString);
-//   selectAuthor(`${obj.author_id || ''}`);
+  // selectVocab(`${obj.createLanguage || ''}`);
 };
 
 export default addVocabForm;

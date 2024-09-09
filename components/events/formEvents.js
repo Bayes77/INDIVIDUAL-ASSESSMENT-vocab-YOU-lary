@@ -16,7 +16,7 @@ const formEvents = () => {
         firebaseKey
         // favorite: document.querySelector('#favorite').checked,
       };
-      console.warn(document.querySelector('#language').value);
+      console.warn(document.querySelector('#createLanguage').value);
       createVocabCard(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 

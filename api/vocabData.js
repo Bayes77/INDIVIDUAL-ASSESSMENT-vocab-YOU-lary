@@ -64,7 +64,7 @@ const deleteVocabCard = (firebaseKey) => new Promise((resolve, reject) => {
 
 // filter vocab card
 
-const vocabOnSale = (uid) => new Promise((resolve, reject) => {
+const javaVocab = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/vocab.json?orderBy="id"&equalTo=${uid}`, {
     method: 'GET',
     headers: {
@@ -72,7 +72,14 @@ const vocabOnSale = (uid) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(data))
+    .then((data) => {
+      const javaLang = Object.values(data).filter((item) => item.createLanguage === 'javascript');
+      if (data) {
+        resolve(javaLang);
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 
@@ -91,5 +98,5 @@ const getSingleCard = (uid) => new Promise((resolve, reject) => {
 });
 
 export {
-  getVocab, createVocabCard, updateVocabCard, deleteVocabCard, vocabOnSale, getSingleCard
+  getVocab, createVocabCard, updateVocabCard, deleteVocabCard, javaVocab, getSingleCard
 };
