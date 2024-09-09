@@ -19,6 +19,11 @@ const navigationEvents = () => {
   // document.querySelector('#sale-vocab').addEventListener('click', () => {
   //   vocabOnSale().then(showVocab);
   // });
-};
 
+  // JavaScript event
+  document.querySelector('#javascript')
+    .addEventListener('click', () => {
+      getVocab(`${firebase.auth().currentUser.uid}`).then(showVocab);
+    });
+};
 export default navigationEvents;
